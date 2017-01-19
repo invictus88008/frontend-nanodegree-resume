@@ -1,25 +1,28 @@
 var bio = {
+    "welcomeMessage" :"Welcome to Jurassic Park",
     "name" : "Nate Hargitt",
     "role" : "Front End Web Develoer",
     "contacts" : {
         "mobile" : "666-666-6666",
-        "email" : "dontTalkToMe@foff.com",
+        "email" : "fakeAssGangsta@gmail.com",
         "github" : "github.com/leefeetr",
         "twitter" : "@doILook12",
-        "location" : "1334 The Alameda, San Jose, 95126"
+        "location" : "San Jose, 95126",
+        "blog": "NateHargitt.com/Blog"
     },
     "Welcome Message" : "hello and welcom to my resume",
     "skills" : ['web development', 'guitar', 'git', 'protecting princesses', 'coming back from the dead'],
-    "bioPic" : 'images/me.png',
+    "biopic" : 'images/me.png',
     display : function() {
         insertTemplateData("#header", HTMLheaderName, bio.name);
          insertTemplateData("#header", HTMLheaderRole, bio.role);
-         insertTemplateData("#header", HTMLbioPic, bio.bioPic);
+         insertTemplateData("#header", HTMLbioPic, bio.biopic);
+         insertTemplateData("#header", HTMLwelcomeMsg, bio.welcomeMessage);
 
     if (bio.skills) {
     $('#header').append(HTMLskillsStart);
         for(i = 0; i < bio.skills.length; i++) {
-            insertTemplateData("#skills", HTMLskills, bio.skills[i])
+            insertTemplateData("#skills", HTMLskills, bio.skills[i]);
         }
     }
     function addContacts (pageID) {
@@ -88,7 +91,7 @@ var work = {
         },
     ],
     display: function() {
-        for(job in work.jobs) {
+        for(var job = 0; job < work.jobs.length; job++) {
         $('#workExperience').append(HTMLworkStart);
         var workInfo = replaceTemplateInfo( HTMLworkEmployer, work.jobs[job].employer ) +
         replaceTemplateInfo( HTMLworkTitle, work.jobs[job].title ) +
@@ -98,20 +101,20 @@ var work = {
         $('.work-entry:last').append(workInfo);
     }
     }
-}
+};
 var projects = {
     projects : [
         {
             "name" : "Javscript BlackJack",
-            "date" : "Dec 2016",
+            "dates" : "Dec 2016",
             "description" : "A JavaScript renditoin of the great game BlackJack",
-            "image" : ['http://natehargitt.com/assets/images/blackjack.png']
+            "images" : ['http://natehargitt.com/assets/images/blackjack.png']
         },
         {
             "name" : "Pro Modeling Portfolio",
-            "date" : "Dec 2016",
+            "dates" : "Dec 2016",
             "description" : "A prorfolio for the top model",
-            "image" : ["http://natehargitt.com/assets/images/kaiarose.png"]
+            "images" : ["http://natehargitt.com/assets/images/kaiarose.png"]
         }
     ],
     display : function() {
@@ -122,12 +125,14 @@ var projects = {
             $('#projects').append(HTMLprojectStart);
             var projectClass = $(".project-entry:last");
             insertTemplateData(projectClass, HTMLprojectTitle, projectsArr[i].name);
-            insertTemplateData(projectClass, HTMLprojectDates, projectsArr[i].date);
+            insertTemplateData(projectClass, HTMLprojectDates, projectsArr[i].dates);
             insertTemplateData(projectClass, HTMLprojectDescription, projectsArr[i].description);
-            insertTemplateData(projectClass, HTMLprojectImage, projectsArr[i].image);
+            for(i = 0; i < projectsArr[i].images.length; i++) {
+            insertTemplateData(projectClass, HTMLprojectImage, projectsArr[i].images);
+            }
         }
     }
-}
+};
 var education = {
     schools : [
         {
@@ -135,14 +140,16 @@ var education = {
             "location" : "San Francisco",
             "degree" : "Front End Development",
             "dates" : "Sept 2015 - Jan 2016",
-            "majors" : ["Front End Web Development"]
+            "majors" : ["Front End Web Development"],
+            "url" : "http://CodifyAcademy.com"
         },
         {
             "name" : "Armstrong",
             "location" : "Plymoth",
             "degree" : "Wasted Time",
             "dates" : "Sep 2004 - Oct 2006",
-            "majors" : ["Socializing", "Dating", "Music"]
+            "majors" : ["Socializing", "Dating", "Music"],
+            "url" : "http://armstrongHigh.com"
         },
     ],
     onlineCourses :  [
@@ -161,6 +168,7 @@ var education = {
         ],
     displaySchools : function() {
             var schoolsArr = education.schools;
+            var onlineClassArr = education.onlineCourses;
 
 
         for(i = 0; i < schoolsArr.length; i++) {
@@ -173,12 +181,7 @@ var education = {
             insertTemplateData(educationClass, HTMLschoolLocation, schoolsArr[i].location);
             insertTemplateData(educationClass, HTMLschoolMajor, schoolsArr[i].majors);
         }
-
-    },
-    displayOnlineSchools : function() {
-            var onlineClassArr = education.onlineCourses;
-
-$('#education').append(HTMLonlineClasses);
+        $('#education').append(HTMLonlineClasses);
         for(i = 0; i < onlineClassArr.length; i++) {
 
 
@@ -187,18 +190,17 @@ $('#education').append(HTMLonlineClasses);
             insertTemplateData(educationClass, HTMLschoolName, onlineClassArr[i].title);
             insertTemplateData(educationClass, HTMLonlineTitle, onlineClassArr[i].name);
             insertTemplateData(educationClass, HTMLonlineSchool, onlineClassArr[i].dates);
-
             insertTemplateData(educationClass, HTMLonlineURL, onlineClassArr[i].url);
         }
 
     }
-}
+};
 
 bio.display();
 projects.display();
 work.display();
 education.displaySchools();
-education.displayOnlineSchools();
+
 
 
 
