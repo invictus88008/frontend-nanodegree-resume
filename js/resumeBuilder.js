@@ -10,7 +10,7 @@ var bio = {
         "location": "San Jose, 95126",
         "blog": "NateHargitt.com/Blog"
     },
-    "Welcome Message": "hello and welcom to my resume",
+
     "skills": ['web development', 'guitar', 'git', 'protecting princesses', 'coming back from the dead'],
     "biopic": 'images/me.png',
     display: function() {
@@ -118,8 +118,8 @@ var projects = {
             insertTemplateData(projectClass, HTMLprojectTitle, projectsArr[i].name);
             insertTemplateData(projectClass, HTMLprojectDates, projectsArr[i].dates);
             insertTemplateData(projectClass, HTMLprojectDescription, projectsArr[i].description);
-            for (var i = 0; i < projectsArr[i].images.length; i++) {
-                insertTemplateData(projectClass, HTMLprojectImage, projectsArr[i].images);
+            for (var j = 0; j < projectsArr[i].images.length; j++) {
+                insertTemplateData(projectClass, HTMLprojectImage, projectsArr[j].images);
             }
         }
     }
@@ -151,7 +151,7 @@ var education = {
         "dates": "Dec 2016",
         "url": "CodeSchool.com"
     }],
-    displaySchools: function() {
+    display: function() {
         var schoolsArr = education.schools;
         var onlineClassArr = education.onlineCourses;
 
@@ -184,7 +184,7 @@ var education = {
 bio.display();
 projects.display();
 work.display();
-education.displaySchools();
+education.display();
 
 
 
