@@ -142,12 +142,12 @@ var education = {
     }, ],
     onlineCourses: [{
         "title": "JavaScript Basics",
-        "name": "Code Academy",
+        "school": "Code Academy",
         "dates": "Dec 2016",
         "url": "http:codeacademy.com"
     }, {
         "title": "NodeJS Basics",
-        "name": "Code School",
+        "school": "Code School",
         "dates": "Dec 2016",
         "url": "CodeSchool.com"
     }],
@@ -173,7 +173,7 @@ var education = {
             $('#education').append(HTMLschoolStart);
             var lastEducationClass = $(".education-entry:last");
             insertTemplateData(lastEducationClass, HTMLschoolName, onlineClassArr[i].title);
-            insertTemplateData(lastEducationClass, HTMLonlineTitle, onlineClassArr[i].name);
+            insertTemplateData(lastEducationClass, HTMLonlineTitle, onlineClassArr[i].school);
             insertTemplateData(lastEducationClass, HTMLonlineSchool, onlineClassArr[i].dates);
             insertTemplateData(lastEducationClass, HTMLonlineURL, onlineClassArr[i].url);
         }
